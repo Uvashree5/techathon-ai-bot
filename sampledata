@@ -1,0 +1,24 @@
+import pandas as pd
+import random
+
+# Function to generate synthetic data for age, income, and health expenses
+def generate_synthetic_data(num_records):
+    data = []
+    
+    for _ in range(num_records):
+        age = random.randint(25, 65)  # Age between 25 and 65
+        income = random.randint(30000, 150000)  # Income between $30k and $150k
+        health_expenses = random.randint(2000, 20000)  # Health expenses between $2k and $20k
+        
+        # Append the generated record
+        data.append([age, income, health_expenses])
+    
+    # Convert to a Pandas DataFrame
+    df = pd.DataFrame(data, columns=["Age", "Income", "Health Expenses"])
+    
+    # Save to CSV file
+    df.to_csv('data/sample_data.csv', index=False)
+    print(f"Synthetic data generated and saved to 'data/sample_data.csv' with {num_records} records!")
+
+# Generate 100 records
+generate_synthetic_data(100)
